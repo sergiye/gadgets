@@ -1,0 +1,160 @@
+﻿<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" src="wz_jsgraphics.js"></script>
+</head>
+ <style type="text/css">
+        body
+        {
+            margin: 0;
+            width: 410px;
+            height: 300px;
+            font-family: verdana;
+            font-size: small;
+        }
+        #imgBackground
+        {
+            width: 410px;
+            height: 300px;
+        }
+ 		#flyoutContent
+        {
+            font-size: xx-small;
+            margin: 5px;
+        }
+        .statusText
+		{
+		    font-family: Segoe UI, Tahoma, Sans-Serif;
+		    font-size: 10px;
+		    color: #839a98;
+		}
+		 .style1 {
+			    font-family: Segoe UI, Tahoma, Sans-Serif;
+			    font-size: 12px;
+			    font-weight: normal;
+			    color: #ffffff;
+		 }
+ </style>
+<body onload="drawGraph();">
+<g:background id="imgBackground" src="flybg.png">
+	<div id="flyoutContent">
+		<span class="style1" id="toptext" style="position:absolute;left:7;top:7;">
+		Battery status (last 3 hours)</span>
+		<div id="graphbg" style="position:absolute;width:360;height:180;left:40;top:29;background:url('chartbg.png'); background-repeat:no-repeat"></div>
+		<div id="graphdiv" style="position:absolute;width:360;height:180;left:40;top:29;"></div>
+		<span class="style1" id="toptext2" style="position:absolute;left:7;top:157;">
+		Battery usage (percent/minute)</span>
+		<span class="style1" id="toptext4" style="position:absolute;left:174;top:157; color:#999933">
+		,used memory</span>
+		<span class="style1" id="toptext3" style="position:absolute;left:253;top:157; color:#8888ff">
+		and CPU utilisation</span>
+		<div id="graphbg2" style="position:absolute;width:360;height:180;left:40;top:179;background:url('chartbg.png'); background-repeat:no-repeat"></div>
+		<div id="graphdiv2" style="position:absolute;width:360;height:180;left:40;top:179;" onclick="writeout();"></div>
+
+		<span class="statusText" style="position:absolute;left:25;top:133;">-3 
+		hrs</span>
+		<span class="statusText" style="position:absolute;left:145;top:133;">-2 
+		hrs</span>
+		<span class="statusText" style="position:absolute;left:267;top:133;">-1 
+		hrs</span>
+		<span class="statusText" style="position:absolute;left:385;top:133;">now</span>
+		
+		<span class="statusText" style="position:absolute;left:25;top:283;">-3 
+		hrs</span>
+		<span class="statusText" style="position:absolute;left:145;top:283;">-2 
+		hrs</span>
+		<span class="statusText" style="position:absolute;left:267;top:283;">-1 
+		hrs</span>
+		<span class="statusText" style="position:absolute;left:385;top:283;">now</span>
+
+		<span class="statusText" style="position:absolute;left:12;top:23;">100%</span>
+		<span class="statusText" style="position:absolute;left:16;top:73;">50%</span>
+		<span class="statusText" style="position:absolute;left:22; top:122;">0%</span>
+		<span id="mptext" class="statusText" style="position:absolute;left:17;top:173;width:18;text-align:right">
+		mp</span>
+		<span id="hptext" class="statusText" style="position:absolute;left:17;top:223;width:18;text-align:right">
+		hp</span>
+		<span class="statusText" style="position:absolute;left:17; top:272;width:18;text-align:right">
+		0%</span>
+	</div>
+</g:background>
+		<script language="javascript" type="text/javascript"> 
+		
+		function writeout(){
+			 var datas2=System.Gadget.document.parentWindow.datas2;
+		    	 var datas=System.Gadget.document.parentWindow.datas;
+		    	 
+		    		 var fso = new ActiveXObject("Scripting.FileSystemObject");
+					var textFile = fso.CreateTextFile("C:\\wo.txt");
+					for (var i=0;i<=359;i++){
+						textFile.WriteLine(datas[i]+" "+datas2[i]+" "+100.0/(datas2[i]*100.0/datas[i]/60));
+					}	
+					textFile.Close();
+		}
+		
+		    //var oGadgetDocument = System.Gadget.document;
+		    var jg = new jsGraphics(document.getElementById("graphdiv"));
+		    var jg2 = new jsGraphics(document.getElementById("graphdiv2"));
+		    function drawGraph(){
+		   		 jg.clear();
+		    	 jg.setColor("#ffffff");
+		    	 jg2.clear();
+		    	 jg2.setColor("#ffffff");
+		    	 var from=System.Gadget.document.parentWindow.from;
+		    	 var end=System.Gadget.document.parentWindow.end-1; if (end<0) end=360+end;
+		    	 var datas=System.Gadget.document.parentWindow.datas;
+		    	 var datas2=new Array(360);
+		    	 for (var i=0;i<360;i++){
+					datas2[i]=System.Gadget.document.parentWindow.datas2[i];
+				 }
+		    	 var datas3=System.Gadget.document.parentWindow.datas3;
+		    	 var datas4=System.Gadget.document.parentWindow.datas4;
+				 //	var str="str";
+			     //--calculate max percent--
+			     var maxperc=1;
+			     var max=-1;
+			     for (var i=0;i<=359;i++){
+			      	if (datas2[i]!=-1&&datas[i]!=-1){
+			      		if (datas2[i]!=0){
+						 	datas2[i]=100.0/(datas2[i]*100.0/datas[i]/60);
+						 	if (datas2[i]>max) max=datas2[i];
+						}
+			      	}
+			      }		
+			      if (max>maxperc) maxperc=2;
+			      var j=0;
+			      while (max>maxperc&&j<49){ maxperc+=2;j++;}	
+			     document.getElementById("mptext").innerText=maxperc+"%";	 
+			     document.getElementById("hptext").innerText=maxperc/2.0+"%";	
+			 	 //-------------------------
+		    	 for (var i=0;i<359;i++){
+		    	 	var nextfrom=end-1;
+		    	 	if (nextfrom<0) nextfrom=359;
+		    	 	if (datas[end]!=-1&&datas[nextfrom]!=-1){
+		    	 		jg.drawLine(360-i-1, 100-datas[end], 360-i-2, 100-datas[nextfrom]);
+		    	 	}
+		    	 	if (datas4[end]>0&&datas4[nextfrom]>0){
+		    	 		jg2.setColor("#999933");
+		    	 		jg2.drawLine(360-i-1, 100-datas4[end], 360-i-2, 100-datas4[nextfrom]);
+		    	 		jg2.setColor("#ffffff");
+		    	 	}
+
+		    	 	if (datas3[end]>0&&datas3[nextfrom]>0){
+		    	 		jg2.setColor("#3333ff");
+		    	 		jg2.drawLine(360-i-1, 100-datas3[end], 360-i-2, 100-datas3[nextfrom]);
+		    	 		jg2.setColor("#ffffff");
+		    	 	}
+		    	 	if (datas2[end]!=-1&&datas2[nextfrom]!=-1){
+		    	 		jg2.drawLine(360-i-1, 100-(datas2[end]*(100/maxperc)), 360-i-2, 100-(datas2[nextfrom]*(100/maxperc)));
+		    	 	}
+		    	 	str="max: "+max+" maxperc: "+maxperc;
+		    	 	end=nextfrom;
+		    	 }
+		    	 //jg.drawString(str,50,50);
+				 jg.paint();   
+				 jg2.paint();
+			}
+	    </script>
+</body>
+</html>
+

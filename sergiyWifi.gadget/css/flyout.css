@@ -1,0 +1,30 @@
+body
+{
+	width: 200px;
+	height: 150px;
+	background: url('/img/flyoutbg.png');
+	margin: 0px;
+	padding: 0px;
+	padding-top:7px;
+}
+
+div.details
+{
+	font-size: 14px;
+	font-family: Segoe UI;
+	padding-left: 10px;
+	color: #FFF;
+}
+
+div.config, div.config:hover
+{
+	font-size: 14px;
+	font-family: Segoe UI;
+	padding-left: 28px;
+	color: #FFF;
+}
+
+div.config:hover
+{
+	text-decoration: underline;
+}

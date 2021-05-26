@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<gadget>
+  <name>Sergiy Wifi</name>
+  <namespace><!--_locComment_text="{Locked}"-->microsoft.windows</namespace>
+  <version><!--_locComment_text="{Locked}"-->1.0</version>
+  <author name="Sergiy Egoshin">
+    <info url="https://github.com/sergiye" />
+    <logo src="/img/icon.png" />
+  </author>
+  <copyright><!--_locComment_text="{Locked}"-->&#169; 2021 Sergiy Egoshin</copyright>
+  <description>Monitor your wireless network connection status and details.</description>
+    <icons>
+      <icon height="48" width="48" src="/img/icon.png" />
+    </icons>
+  <version value="1.0.0.0" MinPlatformVersion ="1.0"/>
+  <hosts>
+    <host name="sidebar">
+      <base type="html" apiVersion="1.0.0" src="network.htm" />
+      <permissions><!--_locComment_text="{Locked}"-->full</permissions>
+      <platform minPlatformVersion ="1.0"/>
+      <defaultImage src="/drag.png" />
+    </host>
+  </hosts>
+</gadget>
