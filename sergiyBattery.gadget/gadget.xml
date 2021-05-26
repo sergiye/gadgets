@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<gadget>
+	<name>Sergiy Battery</name>
+	<version>1.0</version>
+	<author name="Sergiy Egoshin">
+		<info url="https://github.com/sergiye" />
+		<logo src="icon.png" />
+	</author>
+    <copyright><!--_locComment_text="{Locked}"-->&#169; 2021 Sergiy Egoshin</copyright>
+	<description>Battery statistics gadget is a unique tool for laptop users, that not only shows the actual state of your computer's battery, but collects and visualizes battery data too.</description>
+	<icons>
+		<icon height="48" width="48" src="icon.png" />
+	</icons>
+	<hosts>
+		<host name="sidebar">
+			<base type="HTML" apiVersion="1.0.1" src="Battery.html" />
+			<permissions>full</permissions>
+			<platform minPlatformVersion="1.0"/>
+			<defaultImage src="Background.png" />
+		</host>
+	</hosts>
+</gadget>

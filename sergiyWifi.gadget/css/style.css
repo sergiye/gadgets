@@ -1,0 +1,77 @@
+body {
+	background: url('/img/background.png') no-repeat;
+	height: 60px;
+	width: 128px;
+	padding: 0px;
+	margin: 0px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+div.netssid, div.netssid:hover {
+	height: 20px;
+	width: 121px;
+	text-align: center;
+	font-size: 12px;
+	margin-top: 2px;
+	margin-left: 3px;
+	padding-bottom: 0px;
+	font-family: Segoe UI;
+	color: #FFFFFF;
+}
+
+div.netssid:hover {
+	background: url('/img/ssidhover.png') repeat-x;
+}
+
+
+div.percent {
+	height: 32px;
+	font-size: 25px;
+	padding-right: 10px;
+	margin-top: 4px;
+	font-family: Segoe UI;
+	color: #FFFFFF;
+	text-align: right;
+}
+
+
+div.details, div.details:hover {
+	width: 110px;
+	text-align: center;
+	padding-left: 8px;
+	padding-bottom: 4px;
+	font-size: 11px;
+	font-family: Calibri;
+	color: #FFFFFF;
+}
+
+div.details:hover {
+	color: #3b67e8;
+	text-decoration: underline;
+	padding-bottom: 4px;
+}
+
+div.netdetails {
+	width: 110px;
+	text-align: center;
+	padding-top: 1px;
+	padding-left: 8px;
+	font-size: 12px;
+	font-family: Segoe UI;
+	color: #FFFFFF;
+}
+
+
+div.signal {
+	width: 128px;
+}
+
+img.signalimg {
+	padding-top: 7px;
+	padding-right: 3px;
+	padding-left: 7px;
+	width: 32px;
+	height: auto;
+	float: left;
+}
