@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<gadget>
+  <name>Sergiy Weather</name>
+  <namespace>simpl.Weather</namespace>
+  <version>1.0</version>
+  <author name="Sergiy Egoshin">
+    <info url="https://github.com/sergiye" />
+    <logo src="icon.png" />
+  </author>
+  <copyright><!--_locComment_text="{Locked}"-->&#169; 2021 Sergiy Egoshin</copyright>
+  <description>Weather forecast for the coming days.</description>
+  <icons>
+    <icon height="48" width="48" src="icon.png" />
+  </icons>
+  <version value="1.0.0.0" MinPlatformVersion ="1.0"/>
+  <hosts>
+    <host name="sidebar">
+      <base type="HTML" apiVersion="1.0.0" src="gadget.html" />
+      <permissions>full</permissions>
+      <platform minPlatformVersion="1.0" />
+      <defaultImage src="drag.png" />
+      <autoscaleDPI>true</autoscaleDPI>
+    </host>
+  </hosts>
+</gadget>
