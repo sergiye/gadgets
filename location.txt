@@ -1,0 +1,4 @@
+The common locations for gadgets that are installed on the system are the following two:
+
+Program Files\Windows Sidebar\Gadgets
+Users\USERNAME\AppData\Local\Microsoft\Windows Sidebar\Gadgets.

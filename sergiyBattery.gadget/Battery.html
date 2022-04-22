@@ -152,7 +152,7 @@ function upda(){
 		        	oText.value="calculating"
 		    	}else{
 		        	var hr = System.Machine.PowerStatus.batteryCapacityTotal / 3600;
-		        	var min = System.Machine.PowerStatus.batteryCapacityTotal / 60 - hr * 60;
+		        	var min = (System.Machine.PowerStatus.batteryCapacityTotal / 60) % 60;
 		        	oText.value = Math.floor(hr) + " hr " + Math.floor(min) + " min";
 		    	}
 				}
