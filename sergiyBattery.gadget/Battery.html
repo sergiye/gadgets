@@ -52,10 +52,8 @@ function draw(){
 			coImage.src = "url(cn.png)";
 			//power level
 			oImage = document.getElementById("background").addImageObject("", 15, 24);
-			oImage.src = "url(powertop.png)";
 			oImage.brightness=0.1;
 			poImage = document.getElementById("background").addImageObject("", 15, 36);
-			poImage.src = "url(powerbody.png)";
 			poImage.brightness=0.1;
 			//top
 			topImage = document.getElementById("background").addImageObject("", 8, 4);
@@ -85,6 +83,11 @@ var CPUTotal;
 var memoryperc;
 function upda(){
 		third++;
+
+		//default images
+		oImage.src = "url(powertop.png)";
+		poImage.src = "url(powerbody.png)";
+
 		if (third==3) third=0;
 		if (third==0){
 		  	CPUTotal = 0;
@@ -129,6 +132,11 @@ function upda(){
 			      	}
 			    }
 			}else{
+				
+				//on-battery images
+				oImage.src = "url(powertopBattery.png)";
+				poImage.src = "url(powerbodyBattery.png)";
+
 				if (System.Machine.PowerStatus.batteryStatus==4){
 				coun=coun+1;
 				if (coun==2){
