@@ -1,0 +1,76 @@
+﻿<html>
+<head>
+  <title>Digital clock</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <style>
+    body {
+			width:130px;
+			height:60px;
+			position:absolute;
+			margin:0px;
+			padding:0px;
+      cursor:pointer;
+      background:url(images/black.png) no-repeat;
+    }
+    .small {
+      width:8px;
+      height:13px;
+    }
+    .small2 {
+      width:4px;
+      height:13px;
+    }
+  </style>
+  <script>
+    function view(){
+      if (!document.images)
+        return
+      var time = new Date();
+    	var h = time.getHours();
+    	var m = time.getMinutes();
+    	var s = time.getSeconds();
+
+      if (h<=9)
+        document.images.a.src="images/b.png";
+      else
+        document.images.a.src="images/" + Math.floor(h/10) + ".png";
+      document.images.b.src="images/" + (h%10) + ".png";
+
+      if (m<=9)
+        document.images.d.src="images/0.png";
+      else
+        document.images.d.src="images/" + Math.floor(m/10) + ".png";
+      document.images.e.src="images/" + (m%10) + ".png";
+
+      if (s % 2 === 0){
+        document.images.p1.src = "images/point.png";
+        document.images.p2.src = "images/point.png";
+      }
+      else{
+        document.images.p1.src = "images/nopoint.png";
+        document.images.p2.src = "images/nopoint.png";
+      }
+
+      if (s<=9)
+        document.images.g.src="images/0.png";
+      else
+        document.images.g.src="images/" + Math.floor(s/10) + ".png";
+      document.images.h.src="images/" + (s%10) + ".png";
+
+    	setTimeout("view()", 1000);
+    }
+  </script>
+</head>
+<body onLoad="view()">
+	<div id="content" style="margin-top:17; margin-left:6;"> 
+		<img src = "images/b.png" Name = "a">
+	  <img src = "images/b.png" Name = "b">
+	  <img class = "small2" src = "images/nopoint.png" Name = "p1">
+	  <img src = "images/b.png" Name = "d">
+	  <img src = "images/b.png" Name = "e">
+	  <img class = "small2" src = "images/nopoint.png" Name = "p2">
+	  <img class = "small" src = "images/b.png" Name = "g">
+	  <img class = "small" src = "images/b.png" Name = "h">
+	</div>
+</body>
+</html>

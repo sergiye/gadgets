@@ -17,6 +17,7 @@
 			<permissions>full</permissions>
 			<platform minPlatformVersion="1.0"/>
 			<defaultImage src="Background.png" />
+      <autoscaleDPI>true</autoscaleDPI>
 		</host>
 	</hosts>
 </gadget>
