@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<gadget>
+  <name>Sergiy Clock</name>
+  <version>1.0</version>
+  <author name="Sergiy Egoshin">
+    <info url="https://github.com/sergiye" />
+    <logo src="images/icon.png" />
+  </author>
+    <copyright><!--_locComment_text="{Locked}"-->&#169; 2023 Sergiy Egoshin</copyright>
+  <description>Digital clock gadget.</description>
+  <icons>
+    <icon height="48" width="48" src="images/icon.png" />
+  </icons>
+  <hosts>
+    <host name="sidebar">
+      <base type="HTML" apiVersion="1.0.1" src="clock.html" />
+      <permissions>full</permissions>
+      <platform minPlatformVersion="1.0"/>
+      <defaultImage src="images/icon.png" />
+      <autoscaleDPI>false</autoscaleDPI>
+    </host>
+  </hosts>
+</gadget>
