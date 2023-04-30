@@ -1,6 +1,6 @@
 body {
 	background: url('/img/background.png') no-repeat;
-	height: 60px;
+	height: 64px;
 	width: 128px;
 	padding: 0px;
 	margin: 0px;
@@ -9,7 +9,7 @@ body {
 }
 
 div.netssid, div.netssid:hover {
-	height: 20px;
+	height: 18px;
 	width: 121px;
 	text-align: center;
 	font-size: 12px;
