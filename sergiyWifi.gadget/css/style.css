@@ -1,11 +1,9 @@
 body {
 	background: url('/img/background.png') no-repeat;
-	height: 64px;
-	width: 128px;
-	padding: 0px;
-	margin: 0px;
-	overflow: hidden;
-	white-space: nowrap;
+	width: 130px;
+	height: 66px;
+	padding: 0;
+	margin: 0;
 }
 
 div.netssid, div.netssid:hover {
@@ -23,7 +21,6 @@ div.netssid, div.netssid:hover {
 div.netssid:hover {
 	background: url('/img/ssidhover.png') repeat-x;
 }
-
 
 div.percent {
 	height: 32px;
@@ -62,9 +59,8 @@ div.netdetails {
 	color: #FFFFFF;
 }
 
-
 div.signal {
-	width: 128px;
+	width: 130px;
 }
 
 img.signalimg {
