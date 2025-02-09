@@ -138,36 +138,39 @@ function upda(){
 				poImage.src = "url(powerbodyBattery.png)";
 
 				if (System.Machine.PowerStatus.batteryStatus==4){
-				coun=coun+1;
-				if (coun==2){
-			        if (showingcritical==false){
-				        topImage.src = "url(topcritical.png)";
-				        document.getElementById("background").src = "url(backgroundcritical.png)";
-				        oText.opacity=0;
-				        rrText.opacity=0;
-				        showingcritical=true;
-			        }else{
-				        topImage.src = "url(top.png)";
-				        document.getElementById("background").src = "url(background.png)";
-				        oText.opacity=100;
-				        rrText.opacity=100;
-				        showingcritical=false;
-			        }
-			        coun=0;
-			     }
+					coun=coun+1;
+					if (coun==2){
+				        if (showingcritical==false){
+					        topImage.src = "url(topcritical.png)";
+					        document.getElementById("background").src = "url(backgroundcritical.png)";
+					        oText.opacity=0;
+					        rrText.opacity=0;
+					        showingcritical=true;
+				        }else{
+					        topImage.src = "url(top.png)";
+					        document.getElementById("background").src = "url(background.png)";
+					        oText.opacity=100;
+					        rrText.opacity=100;
+					        showingcritical=false;
+				        }
+				        coun=0;
+			     	}
 			    }
 		    	if (System.Machine.PowerStatus.batteryCapacityTotal==-1){
 		        	oText.value="calculating"
 		    	}else{
-		        	var hr = System.Machine.PowerStatus.batteryCapacityTotal / 3600;
-		        	var min = (System.Machine.PowerStatus.batteryCapacityTotal / 60) % 60;
-		        	oText.value = Math.floor(hr) + ":" + Math.floor(min) + " left";
+
+		        	var hr = Math.floor(System.Machine.PowerStatus.batteryCapacityTotal / 3600);
+		        	var min = Math.floor((System.Machine.PowerStatus.batteryCapacityTotal / 60) % 60);
+				    // if (hr < 10) { hr = "0" + hr; }
+				    if (min < 10) { min = "0" + min; }
+		        	oText.value = hr + ":" + min + " left";
 		    	}
-				}
-				// oText.fontsize = 13;
-			    powerlevelshow();
-            }
-            setTimeout(upda, 10000);
+			}
+			// oText.fontsize = 13;
+		    powerlevelshow();
+        }
+        setTimeout(upda, 10000);
 }
 function powerlevelshow(){
 			if (System.Machine.PowerStatus.isPowerLineConnected == true){
