@@ -1,50 +1,50 @@
 ﻿<html>
-<head>
-    <title>Battery</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <style type="text/css">
-        body
-        {
-            margin: 0;
-            width: 130px;
-            height: 66px;
-            font-family: verdana;
-            font-weight: bold;
-            font-size: small;
-        }
-        #gadgetContent
-        {
-            margin-top: 0px;
-            width: 130px;
-            vertical-align: middle;
-            text-align: center;
-            overflow: hidden;
-            height: 66px;
-        }
-        #TextArea1
-        {
-            width: 136px;
-            height: 23px;
-        }
-    </style>
 
-    <script language="javascript" type="text/javascript">
-var oText,rrText, topImage,coImage,mouseupImage;
-var pc=100;
- var CPUNo = System.Machine.CPUs.count;
-function init(){
+<head>
+	<title>Battery</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css">
+		body {
+			margin: 0;
+			width: 130px;
+			height: 66px;
+			font-family: verdana;
+			font-weight: bold;
+			font-size: small;
+		}
+
+		#gadgetContent {
+			margin-top: 0px;
+			width: 130px;
+			vertical-align: middle;
+			text-align: center;
+			overflow: hidden;
+			height: 66px;
+		}
+
+		#TextArea1 {
+			width: 136px;
+			height: 23px;
+		}
+	</style>
+
+	<script language="javascript" type="text/javascript">
+		var oText, rrText, topImage, coImage, mouseupImage;
+		var pc = 100;
+		var CPUNo = System.Machine.CPUs.count;
+		function init() {
 			System.Gadget.Flyout.file = "flyout.html";
 			System.Gadget.settingsUI = "settings.html";
-			for (var i=0;i<360;i++){
-				datas[i]=-1;
-				datas2[i]=-1;
-				datas3[i]=-1;
-				datas4[i]=-1;
+			for (var i = 0; i < 360; i++) {
+				datas[i] = -1;
+				datas2[i] = -1;
+				datas3[i] = -1;
+				datas4[i] = -1;
 			}
 			draw();
 			upda();
- }
-function draw(){
+		}
+		function draw() {
 			document.getElementById("background").removeObjects();
 			document.getElementById("background").src = "url(background.png)";
 			//connected
@@ -52,172 +52,175 @@ function draw(){
 			coImage.src = "url(cn.png)";
 			//power level
 			oImage = document.getElementById("background").addImageObject("", 15, 24);
-			oImage.brightness=0.1;
+			oImage.brightness = 0.1;
 			poImage = document.getElementById("background").addImageObject("", 15, 36);
-			poImage.brightness=0.1;
+			poImage.brightness = 0.1;
 			//top
 			topImage = document.getElementById("background").addImageObject("", 8, 4);
 			topImage.src = "url(top.png)";
 			//connectedtop
 			cnImage = document.getElementById("background").addImageObject("", 5, 10);
 			cnImage.src = "url(cnf.png)";
-			
-            //gadgetContent.innerHTML="<img id="imgGIMAGE" src="boff.png" >"+gadgetContent.innerHTML
+
+			//gadgetContent.innerHTML="<img id="imgGIMAGE" src="boff.png" >"+gadgetContent.innerHTML
 			rrText = document.getElementById("background").addTextObject("", "Calibri", 22, "white", 125, 7);
-			rrText.align=2;
+			rrText.align = 2;
 			oText = document.getElementById("background").addTextObject("Charged", "Verdana", 13, "white", 123, 38);
-			oText.align=2;
-			
+			oText.align = 2;
+
 			noImage = document.getElementById("background").addImageObject("", 0, 0);
 			noImage.src = "url(nobattery.png)";
-			noImage.opacity=0;
-			
+			noImage.opacity = 0;
+
 			mouseupImage = document.getElementById("background").addImageObject("", 0, 0);
 			mouseupImage.src = "url(white.png)";
-			mouseupImage.opacity=0;
-}
-var showingcritical=false;
-var coun=0;
-var CPUPercent;
-var CPUTotal;
-var memoryperc;
-function upda(){
-		third++;
-
-		//default images
-		oImage.src = "url(powertop.png)";
-		poImage.src = "url(powerbody.png)";
-
-		if (third==3) third=0;
-		if (third==0){
-		  	CPUTotal = 0;
-		    for (var i=0; i < CPUNo; i++) {
-		      CPUTotal += System.Machine.CPUs.item(i).usagePercentage;
-		    }
-		    CPUTotal = Math.round(CPUTotal);
-		    CPUPercent = CPUTotal / CPUNo;
-		    CPUPercent = CPUPercent >= 99 ? 99 : CPUPercent;
-		    memoryperc=(1-System.Machine.availableMemory/System.Machine.totalMemory)*100;
+			mouseupImage.opacity = 0;
 		}
-        if (System.Machine.PowerStatus.batteryStatus==255||System.Machine.PowerStatus.batteryPercentRemaining==255){
-			noImage.opacity=100;
-			poImage.opacity=0;
-			cnImage.opacity=0;
-			if (third==0) addData(-1,-1,CPUPercent,memoryperc);
-        }else{
-        	noImage.opacity=0;
-        	poImage.opacity=100;
-        	if (third==0){
-        		var tot=System.Machine.PowerStatus.batteryCapacityTotal;
-        		if (tot==-1) tot=0;
-        		addData(System.Machine.PowerStatus.batteryPercentRemaining,tot,CPUPercent,memoryperc);
-        	}
-			rrText.value=System.Machine.PowerStatus.batteryPercentRemaining+"%";
-			rrText.fontsize = 22;
-			if (System.Machine.PowerStatus.isPowerLineConnected == true){
-			    if (showingcritical==true){
-			        topImage.src = "url(top.png)";
-			        document.getElementById("background").src = "url(background.png)";
-			        oText.opacity=100;
-			        rrText.opacity=100;
-			        showingcritical=false;
-			    }
-        		if (System.Machine.PowerStatus.isBatteryCharging == true){
-	          		oText.value = "Charging";
-		      	}else{
-				    if (System.Machine.PowerStatus.batteryPercentRemaining == 100){
-				      oText.value = "Charged";
-			      	}else{
-			        	oText.value = "Plugged in";
-			      	}
-			    }
-			}else{
-				
-				//on-battery images
-				oImage.src = "url(powertopBattery.png)";
-				poImage.src = "url(powerbodyBattery.png)";
+		var showingcritical = false;
+		var coun = 0;
+		var CPUPercent;
+		var CPUTotal;
+		var memoryperc;
+		function upda() {
+			third++;
 
-				if (System.Machine.PowerStatus.batteryStatus==4){
-					coun=coun+1;
-					if (coun==2){
-				        if (showingcritical==false){
-					        topImage.src = "url(topcritical.png)";
-					        document.getElementById("background").src = "url(backgroundcritical.png)";
-					        oText.opacity=0;
-					        rrText.opacity=0;
-					        showingcritical=true;
-				        }else{
-					        topImage.src = "url(top.png)";
-					        document.getElementById("background").src = "url(background.png)";
-					        oText.opacity=100;
-					        rrText.opacity=100;
-					        showingcritical=false;
-				        }
-				        coun=0;
-			     	}
-			    }
-		    	if (System.Machine.PowerStatus.batteryCapacityTotal==-1){
-		        	oText.value="calculating"
-		    	}else{
+			//default images
+			oImage.src = "url(powertop.png)";
+			poImage.src = "url(powerbody.png)";
 
-		        	var hr = Math.floor(System.Machine.PowerStatus.batteryCapacityTotal / 3600);
-		        	var min = Math.floor((System.Machine.PowerStatus.batteryCapacityTotal / 60) % 60);
-				    // if (hr < 10) { hr = "0" + hr; }
-				    if (min < 10) { min = "0" + min; }
-		        	oText.value = hr + ":" + min + " left";
-		    	}
+			if (third == 3) third = 0;
+			if (third == 0) {
+				CPUTotal = 0;
+				for (var i = 0; i < CPUNo; i++) {
+					CPUTotal += System.Machine.CPUs.item(i).usagePercentage;
+				}
+				CPUTotal = Math.round(CPUTotal);
+				CPUPercent = CPUTotal / CPUNo;
+				CPUPercent = CPUPercent >= 99 ? 99 : CPUPercent;
+				memoryperc = (1 - System.Machine.availableMemory / System.Machine.totalMemory) * 100;
 			}
-			// oText.fontsize = 13;
-		    powerlevelshow();
-        }
-        setTimeout(upda, 10000);
-}
-function powerlevelshow(){
-			if (System.Machine.PowerStatus.isPowerLineConnected == true){
-					coImage.opacity=100;
-					cnImage.opacity=100;
-			}else{
-					coImage.opacity=0;
-					cnImage.opacity=0;
+			if (System.Machine.PowerStatus.batteryStatus == 255 || System.Machine.PowerStatus.batteryPercentRemaining == 255) {
+				noImage.opacity = 100;
+				poImage.opacity = 0;
+				cnImage.opacity = 0;
+				if (third == 0) addData(-1, -1, CPUPercent, memoryperc);
+			} else {
+				noImage.opacity = 0;
+				poImage.opacity = 100;
+				if (third == 0) {
+					var tot = System.Machine.PowerStatus.batteryCapacityTotal;
+					if (tot == -1) tot = 0;
+					addData(System.Machine.PowerStatus.batteryPercentRemaining, tot, CPUPercent, memoryperc);
+				}
+				rrText.value = System.Machine.PowerStatus.batteryPercentRemaining + "%";
+				rrText.fontsize = 22;
+				if (System.Machine.PowerStatus.isPowerLineConnected == true) {
+					if (showingcritical == true) {
+						topImage.src = "url(top.png)";
+						document.getElementById("background").src = "url(background.png)";
+						oText.opacity = 100;
+						rrText.opacity = 100;
+						showingcritical = false;
+					}
+					if (System.Machine.PowerStatus.isBatteryCharging == true) {
+						oText.value = "Charging";
+					} else {
+						if (System.Machine.PowerStatus.batteryPercentRemaining == 100) {
+							oText.value = "Charged";
+						} else {
+							oText.value = "Plugged in";
+						}
+					}
+				} else {
+
+					//on-battery images
+					oImage.src = "url(powertopBattery.png)";
+					poImage.src = "url(powerbodyBattery.png)";
+
+					if (System.Machine.PowerStatus.batteryStatus == 4) {
+						coun = coun + 1;
+						if (coun == 2) {
+							if (showingcritical == false) {
+								topImage.src = "url(topcritical.png)";
+								document.getElementById("background").src = "url(backgroundcritical.png)";
+								oText.opacity = 0;
+								rrText.opacity = 0;
+								showingcritical = true;
+							} else {
+								topImage.src = "url(top.png)";
+								document.getElementById("background").src = "url(background.png)";
+								oText.opacity = 100;
+								rrText.opacity = 100;
+								showingcritical = false;
+							}
+							coun = 0;
+						}
+					}
+					if (System.Machine.PowerStatus.batteryCapacityTotal == -1) {
+						oText.value = "calculating"
+					} else {
+
+						var hr = Math.floor(System.Machine.PowerStatus.batteryCapacityTotal / 3600);
+						var min = Math.floor((System.Machine.PowerStatus.batteryCapacityTotal / 60) % 60);
+						// if (hr < 10) { hr = "0" + hr; }
+						if (min < 10) { min = "0" + min; }
+						oText.value = hr + ":" + min + " left";
+					}
+				}
+				// oText.fontsize = 13;
+				powerlevelshow();
 			}
-			oImage.top=9+(100-System.Machine.PowerStatus.batteryPercentRemaining)/2.75;
-			poImage.height=System.Machine.PowerStatus.batteryPercentRemaining*0.38+3;
-			poImage.top=oImage.top+11-(34-poImage.height)/2;
-}
-//--------GRAPH-DATA-----------------------------
-var third=-1;
-var datas=new Array(360);
-var datas2=new Array(360);
-var datas3=new Array(360);
-var datas4=new Array(360);
-var from=0;
-var end=0;
-var over=false;
-function addData(percent,total,cpu,mem){
-		datas[end]=percent;
-		datas2[end]=total;
-		datas3[end]=cpu;
-		datas4[end]=mem;
-		end++;
-		if (over){
-			from++;
-			if (from>359) from=0;
+			setTimeout(upda, 10000);
 		}
-		if (end>359){
-			end=0;
-			over=true;
+		function powerlevelshow() {
+			if (System.Machine.PowerStatus.isPowerLineConnected == true) {
+				coImage.opacity = 100;
+				cnImage.opacity = 100;
+			} else {
+				coImage.opacity = 0;
+				cnImage.opacity = 0;
+			}
+			oImage.top = 9 + (100 - System.Machine.PowerStatus.batteryPercentRemaining) / 2.75;
+			poImage.height = System.Machine.PowerStatus.batteryPercentRemaining * 0.38 + 3;
+			poImage.top = oImage.top + 11 - (34 - poImage.height) / 2;
 		}
-		if (System.Gadget.Flyout.show&&System.Gadget.Flyout.document!=null) System.Gadget.Flyout.document.parentWindow.drawGraph();
-}
-function showgraph(){
-    if (!System.Gadget.Flyout.show) System.Gadget.Flyout.show = true; else System.Gadget.Flyout.show = false;
-}
-//--------------------------------------- ]]>
-</script>
+		//--------GRAPH-DATA-----------------------------
+		var third = -1;
+		var datas = new Array(360);
+		var datas2 = new Array(360);
+		var datas3 = new Array(360);
+		var datas4 = new Array(360);
+		var from = 0;
+		var end = 0;
+		var over = false;
+		function addData(percent, total, cpu, mem) {
+			datas[end] = percent;
+			datas2[end] = total;
+			datas3[end] = cpu;
+			datas4[end] = mem;
+			end++;
+			if (over) {
+				from++;
+				if (from > 359) from = 0;
+			}
+			if (end > 359) {
+				end = 0;
+				over = true;
+			}
+			if (System.Gadget.Flyout.show && System.Gadget.Flyout.document != null) System.Gadget.Flyout.document.parentWindow.drawGraph();
+		}
+		function showgraph() {
+			if (!System.Gadget.Flyout.show) System.Gadget.Flyout.show = true; else System.Gadget.Flyout.show = false;
+		}
+		//--------------------------------------- ]]>
+	</script>
 </head>
+
 <body onload="init()">
-    <g:background id="background" onclick="showgraph()" onmouseover="mouseupImage.opacity=20;" onmouseout="mouseupImage.opacity=0;"   style="cursor:pointer">
-            <span id="gadgetContent"> </span>
-    </g:background>
+	<g:background id="background" onclick="showgraph()" onmouseover="mouseupImage.opacity=20;"
+		onmouseout="mouseupImage.opacity=0;" style="cursor:pointer">
+		<span id="gadgetContent"> </span>
+	</g:background>
 </body>
+
 </html>
