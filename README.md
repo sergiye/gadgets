@@ -1,7 +1,7 @@
 # Gadgets
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/sergiye/gadgets?style=for-the-badge)
-![GitHub all releases](https://img.shields.io/github/downloads/sergiye/gadgets/total?style=for-the-badge)
-![GitHub last commit](https://img.shields.io/github/last-commit/sergiye/gadgets?style=for-the-badge)
+![Release](https://img.shields.io/github/v/release/sergiye/gadgets?style=for-the-badge)
+![Downloads](https://img.shields.io/github/downloads/sergiye/gadgets/total?style=for-the-badge)
+![Last commit](https://img.shields.io/github/last-commit/sergiye/gadgets?style=for-the-badge)
 
 Set of Windows desktop gadgets (tested on Win10/11 with 8GadgetPack)
 
@@ -22,7 +22,6 @@ Support the Armed Forces of Ukraine and People Affected by Russia’s Aggression
 - Battery gadget
 - WiFi gadget
 - Time (clocks) gadget
-- Weather monitoring (deprecated)
 
 ## What will it look like?
 
