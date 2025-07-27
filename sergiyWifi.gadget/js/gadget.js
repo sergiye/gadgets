@@ -29,23 +29,23 @@ function networkInfo()
 	//If connected to a network, then display the proper signal status image
 	if (status == true)
 	{	
-		if (Strength > 79)
+		if (Strength > 85)
 		{
 			document.getElementById('networkSignal').src = "/img/Signal/060.png";
 		}
-		else if (Strength > 59)
+		else if (Strength > 65)
 		{
 			document.getElementById('networkSignal').src = "/img/Signal/059.png";
 		}
-		else if (Strength > 39)
+		else if (Strength > 45)
 		{
 			document.getElementById('networkSignal').src = "/img/Signal/058.png";
 		}
-		else if (Strength > 19)
+		else if (Strength > 25)
 		{
 			document.getElementById('networkSignal').src = "/img/Signal/057.png";
 		}
-		else if (Strength > 0)
+		else if (Strength > 5)
 		{
 			document.getElementById('networkSignal').src = "/img/Signal/056.png";
 		}
