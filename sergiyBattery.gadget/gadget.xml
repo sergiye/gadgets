@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <gadget>
 	<name>Sergiy Battery</name>
-	<version>1.0</version>
+	<version>1.1</version>
 	<author name="Sergiy Egoshin">
 		<info url="https://github.com/sergiye" />
 		<logo src="icon.png" />
@@ -13,7 +13,7 @@
 	</icons>
 	<hosts>
 		<host name="sidebar">
-			<base type="HTML" apiVersion="1.0.1" src="Battery.html" />
+			<base type="HTML" apiVersion="1.0.0" src="Battery.html" />
 			<permissions>full</permissions>
 			<platform minPlatformVersion="1.0"/>
 			<defaultImage src="Background.png" />
