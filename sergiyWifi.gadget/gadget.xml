@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <gadget>
   <name>Sergiy Wifi</name>
-  <version>1.1</version>
+  <version>1.2</version>
   <author name="Sergiy Egoshin">
     <info url="https://github.com/sergiye" />
     <logo src="/img/icon.png" />
