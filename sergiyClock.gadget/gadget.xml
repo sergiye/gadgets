@@ -2,22 +2,22 @@
 <gadget>
   <name>Sergiy Clock</name>
   <version>1.0</version>
-  <author name="Sergiy Egoshin">
-    <info url="https://github.com/sergiye" />
-    <logo src="images/icon.png" />
+  <author name="Sergiy Egoshyn">
+    <info url="https://github.com/sergiye"/>
+    <logo src="images/icon.png"/>
   </author>
-    <copyright><!--_locComment_text="{Locked}"-->&#169; 2023 Sergiy Egoshin</copyright>
+  <copyright>© 2023 Sergiy Egoshyn</copyright>
   <description>Digital clock gadget.</description>
   <icons>
-    <icon height="48" width="48" src="images/icon.png" />
+    <icon height="48" src="images/icon.png" width="48"/>
   </icons>
   <hosts>
     <host name="sidebar">
-      <base type="HTML" apiVersion="1.0.1" src="clock.html" />
+      <base apiVersion="1.0.1" src="clock.html" type="HTML"/>
       <permissions>full</permissions>
       <platform minPlatformVersion="1.0"/>
-      <defaultImage src="images/icon.png" />
-      <autoscaleDPI>false</autoscaleDPI>
+      <defaultImage src="images/icon.png"/>
+      <autoscaleDPI>true</autoscaleDPI>
     </host>
   </hosts>
 </gadget>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gadget>
+  <name>Sergiye Clock</name>
+  <version>2.0</version>
+  <author name="Sergiy Egoshyn">
+    <info url="https://github.com/sergiye"/>
+    <logo src="icon.png" />
+  </author>
+  <copyright>© SergiyE 2025</copyright>
+  <description>Watch the clock in your own time zone or any city in the world.</description>
+  <icons>
+    <icon height="48" src="icon.png" width="48"/>
+  </icons>
+  <hosts>
+    <host name="sidebar">
+      <base apiVersion="1.0.0" src="clock.html" type="html"/>
+      <permissions>full</permissions>
+      <platform minPlatformVersion="1.0"/>
+      <defaultImage src="icon.png"/>
+      <autoscaleDPI>true</autoscaleDPI>
+    </host>
+  </hosts>
+</gadget>
