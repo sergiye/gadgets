@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <gadget>
-  <name>Sergiye Clock</name>
+  <name>SergiyE Clock</name>
   <version>2.0</version>
   <author name="Sergiy Egoshyn">
     <info url="https://github.com/sergiye"/>
     <logo src="icon.png" />
   </author>
-  <copyright>© SergiyE 2025</copyright>
+  <copyright>© 2025 Sergiy Egoshyn</copyright>
   <description>Watch the clock in your own time zone or any city in the world.</description>
   <icons>
     <icon height="48" src="icon.png" width="48"/>

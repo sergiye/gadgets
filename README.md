@@ -15,7 +15,9 @@ Set of Windows desktop gadgets (tested on Win10/11 with 8GadgetPack)
 
 ## What will it look like?
 
-[<img src="https://github.com/sergiye/gadgets/raw/master/preview.png" alt="Themes" width="300"/>](https://github.com/sergiye/gadgets/releases)
+[<img src="https://github.com/sergiye/gadgets/raw/master/preview.png" alt="preview"/>](https://github.com/sergiye/gadgets/raw/master/preview.png)
+
+[<img src="https://github.com/sergiye/gadgets/raw/master/preview2.png" alt="Themes"/>](https://github.com/sergiye/gadgets/raw/master/preview2.png)
 
 ## Download
 

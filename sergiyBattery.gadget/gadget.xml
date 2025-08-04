@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <gadget>
-	<name>Sergiy Battery</name>
-	<version>1.0</version>
-	<author name="Sergiy Egoshin">
+	<name>SergiyE Battery</name>
+	<version>1.1</version>
+	<author name="Sergiy Egoshyn">
 		<info url="https://github.com/sergiye"/>
 		<logo src="icon.png"/>
 	</author>

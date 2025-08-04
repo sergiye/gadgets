@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <gadget>
-  <name>Sergiy Wifi</name>
-  <version>1.2</version>
-  <author name="Sergiy Egoshin">
+  <name>SergiyE Wifi</name>
+  <version>1.3</version>
+  <author name="Sergiy Egoshyn">
     <info url="https://github.com/sergiye" />
     <logo src="/img/icon.png" />
   </author>
-  <copyright>&#169; 2021 Sergiy Egoshin</copyright>
+  <copyright>© 2021 Sergiy Egoshin</copyright>
   <description>Monitor your wireless network connection status and details.</description>
     <icons>
       <icon height="48" width="48" src="/img/icon.png" />
