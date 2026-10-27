@@ -8,6 +8,13 @@ var clockPartsHeight;
 var clockPartsTop;
 var clockPartsLeft;
 var date;
+var shownDay = -1;
+var dateFont = "Segoe UI Semibold";
+var dateColor = "Color(255, 60, 140, 231)";
+var dayOfMonthFontSize = 35;
+var dayOfMonthCenterTop = 43;
+var dayOfWeekFontSize = 22;
+var dayOfWeekCenterTop = 85;
 var intervalTime;
 var newTimeOut;
 ////////////////////////////////////////////////////////////////////////////////
@@ -66,7 +73,7 @@ function timePerInterval()
 		seconds = getSeconds();
 	}
 
-	dayOfMonth.innerText = (date.getDate() < 10 ? "0" : "") + date.getDate();
+	updateDateInfo();
 	
 	var rotationHours = hours;
 
@@ -154,6 +161,50 @@ function refreshDate()
 }
 ////////////////////////////////////////////////////////////////////////////////
 //
+// updates the day of month and the weekday name when the day changes
+//
+////////////////////////////////////////////////////////////////////////////////
+function updateDateInfo()
+{
+	if (date.getDate() == shownDay)
+	{
+		return;
+	}
+	shownDay = date.getDate();
+
+	clockBg.removeObjects();
+	addCenteredText((shownDay < 10 ? "0" : "") + shownDay, dayOfMonthFontSize, dayOfMonthCenterTop);
+	addCenteredText(getWeekdayName(date.getDay()), dayOfWeekFontSize, dayOfWeekCenterTop);
+}
+////////////////////////////////////////////////////////////////////////////////
+//
+// draws text on the gadget background, HTML text gets a colored fringe on the transparent gadget layer
+//
+////////////////////////////////////////////////////////////////////////////////
+function addCenteredText(text, fontSize, centerTop)
+{
+	var textObject = clockBg.addTextObject(text, dateFont, fontSize, dateColor, 0, 0);
+	textObject.left = Math.round((130 - textObject.width) / 2);
+	textObject.top = Math.round(centerTop - textObject.height / 2);
+}
+////////////////////////////////////////////////////////////////////////////////
+//
+// returns the weekday name in the system regional settings language
+//
+////////////////////////////////////////////////////////////////////////////////
+function getWeekdayName(dayIndex)
+{
+	try
+	{
+		return getLocalWeekdayName(dayIndex);
+	}
+	catch (e)
+	{
+		return new Array("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")[dayIndex];
+	}
+}
+////////////////////////////////////////////////////////////////////////////////
+//
 // settings event closed
 //
 ////////////////////////////////////////////////////////////////////////////////
@@ -198,6 +249,7 @@ function settingsChanged()
 	setImages();
 
 	clearTimeout(newTimeOut);
+	shownDay = -1;
 
 	if (mySetting.secondsEnabled)
 	{
