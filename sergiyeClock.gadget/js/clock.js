@@ -203,8 +203,8 @@ function settingsChanged()
 		case "black":
 			clockPartsWidth = 13;
 			clockPartsHeight = 129;
-			clockPartsTop = -1;
-			clockPartsLeft = 57;
+			clockPartsTop = 0;
+			clockPartsLeft = 58;
 			break;
 	}
 	
