@@ -68,6 +68,8 @@ function loadSettings()
 	}
 	
 	secondsEnabled.checked = mySetting.secondsEnabled;
+	dateEnabled.checked = mySetting.dateEnabled;
+	weekdayEnabled.checked = mySetting.weekdayEnabled;
 
 	System.Gadget.onSettingsClosing = settingsClosing;
 }
@@ -155,6 +157,8 @@ function clockSettings()
 	this.timeZoneDSTBias = INF_DSTBIAS;
 	this.timeZoneName = "";
 	this.secondsEnabled = false;
+	this.dateEnabled = true;
+	this.weekdayEnabled = true;
 }
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -167,6 +171,8 @@ function loadSettingFromDisk()
 	{
 		this.themeID = getValidThemeID(System.Gadget.Settings.read("themeID"));
 		this.secondsEnabled = System.Gadget.Settings.read("secondsEnabled");
+		this.dateEnabled = readBoolSetting("dateEnabled", true);
+		this.weekdayEnabled = readBoolSetting("weekdayEnabled", true);
 
 		this.timeZoneIndex = parseInt(System.Gadget.Settings.read("timeZoneIndex"));
 
@@ -285,6 +291,18 @@ function saveSettingToDisk()
 
 	System.Gadget.Settings.writeString("timeZoneName", escape(this.timeZoneName));
 	System.Gadget.Settings.write("secondsEnabled", this.secondsEnabled);
+	System.Gadget.Settings.write("dateEnabled", this.dateEnabled);
+	System.Gadget.Settings.write("weekdayEnabled", this.weekdayEnabled);
+}
+////////////////////////////////////////////////////////////////////////////////
+//
+// read a boolean setting, falling back to the default when it was never saved
+//
+////////////////////////////////////////////////////////////////////////////////
+function readBoolSetting(name, defaultValue)
+{
+	var value = System.Gadget.Settings.read(name);
+	return (typeof(value) == "boolean") ? value : defaultValue;
 }
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -310,6 +328,8 @@ function saveSettings()
 	}
 
 	mySetting.secondsEnabled = secondsEnabled.checked;
+	mySetting.dateEnabled = dateEnabled.checked;
+	mySetting.weekdayEnabled = weekdayEnabled.checked;
 
 	mySetting.save();
 }

@@ -49,15 +49,21 @@
 <div style="padding-top:11px"></div>
 <table cellspacing="0" cellpadding="0" style="width:100%;font-size:12px">
     <tr>
-        <td rowspan="4" style="width:2px" nowrap></td>
+        <td rowspan="6" style="width:2px" nowrap></td>
         <td><label id="L_TIMEZONE_TEXT" for="timeZoneIndex">Time zone:</label></td>
-        <td rowspan="4" style="width:2px" nowrap></td>
+        <td rowspan="6" style="width:2px" nowrap></td>
     </tr>
     <tr>
         <td style="width:100%" style="padding-top:3px"><select id="timeZoneIndex" onchange="this.title=timeZoneIndex.options[this.selectedIndex].text" style="width:100%;font-size:12px"></select></td>
     </tr>
     <tr>
         <td style="padding-top:7px"><input type="checkbox" id="secondsEnabled" value="checkbox" /><label id="L_SHOWSECONDS_TEXT" for="secondsEnabled">Show the second hand</label></td>
+    </tr>
+    <tr>
+        <td style="padding-top:3px"><input type="checkbox" id="dateEnabled" value="checkbox" /><label id="L_SHOWDATE_TEXT" for="dateEnabled">Show the date</label></td>
+    </tr>
+    <tr>
+        <td style="padding-top:3px"><input type="checkbox" id="weekdayEnabled" value="checkbox" /><label id="L_SHOWWEEKDAY_TEXT" for="weekdayEnabled">Show the day of the week</label></td>
     </tr>
 </table>
 </body>

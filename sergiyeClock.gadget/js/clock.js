@@ -227,6 +227,9 @@ function settingsChanged()
 		s.style.visibility = "hidden";
 		dot.style.visibility = "visible";
 	}
+
+	dayDigit1.style.visibility = dayDigit2.style.visibility = mySetting.dateEnabled ? "visible" : "hidden";
+	dayName.style.visibility = mySetting.weekdayEnabled ? "visible" : "hidden";
 	
 	timePerInterval();
 }
